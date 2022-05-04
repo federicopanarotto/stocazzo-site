@@ -11,7 +11,7 @@
     flex-direction: column;
 }
 
-#top {
+#nav {
     height: 80px;
     display: flex;
     align-items: center;
@@ -19,33 +19,33 @@
     justify-content: space-between;
 }
 
-#top h1 {
+#nav-text {
     text-transform: uppercase;
 }
 
-#top button {
+#nav-button {
     padding: 10px 20px;
     border: none;
-    color: #999;
 }
 
-#center {
+#container {
     height: calc(100% - 80px);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#center h1 {
+#container-text {
     font-size: 140px;
 }
 
-#cursor {
+#container-cursor {
     width: 100px;
     height: 20px;
+    background-color: #000000;
 }
 
-.text {
+#text {
     display: flex;
     align-items: flex-end;
     height: 130px;
