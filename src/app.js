@@ -25,12 +25,7 @@
 //     clearInterval(timer);
 // }
 
-// slider.oninput = function() {
-//     output.innerHTML = this.value;
-//     speed = this.value;
-//     console.log(speed);
-//     console.log(this.value);
-// }
+
 
 // // mode = true => bianco, mode = false => nero
 // let mode = false;
@@ -199,10 +194,12 @@
 const changeModeButton = document.querySelector("#nav-button");
 const contentArea = document.querySelector("#main");
 
-changeModeButton.addEventListener("click", () => {
+changeModeButton.addEventListener("click", chageMode);
+
+function chageMode() {
     let currentClass = contentArea.className;
     contentArea.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
-});
+}
 
 
 const textArea = document.querySelector("#container-text");
@@ -294,21 +291,52 @@ function writeWord() {
     }
 }
 
-let interval = 2000;
-let intervalID;
+let interval1 = 1000;
+let interval2 = 1000;
+let intervalID1;
+let intervalID2;
 
-startInterval(interval);
-
-function startInterval(inter) {
+function startInterval(interID, inter, typeFunction) {
     intervalID = setInterval(() => {
-        console.log(inter);
-        writeWord();
+        typeFunction();
     }, inter);
 }
 
-textArea.addEventListener("click", () => {
-    interval -= 100;
-    clearInterval(intervalID);
-    startInterval(interval);
-    console.log("On click:", interval);
+function resetInteval1() {
+    clearInterval(intervalID1);
+    startInterval(interval1);
+}
+
+function resetInteval2() {
+    clearInterval(intervalID2);
+    startInterval(interval2);
+}
+
+
+const sliderTextSpeed = document.querySelector("#slider-text");
+const sliderWindowSpeed = document.querySelector("#slider-window");
+const sliderOutputText = document.querySelector("#options-slider-value-text");
+const sliderOutputWindow = document.querySelector("#options-slider-value-window");
+
+let textSpeed = 0;
+let textSpeedID;
+let windowSpeed = 0;
+let windowSpeedID;
+
+sliderTextSpeed.addEventListener("mousemove", () => {
+    textSpeed = sliderTextSpeed.value;
+    sliderOutputText.textContent = sliderTextSpeed.value;
+    if (textSpeed !== 0) {
+        resetInteval1();
+        startInterval(textSpeedID, textSpeed, writeWord);
+    }
+});
+
+sliderWindowSpeed.addEventListener("mousemove", () => {
+    windowSpeed = sliderWindowSpeed.value;
+    sliderOutputWindow.textContent = sliderWindowSpeed.value;
+    if (textSpeed !== 0) {
+        resetInteval2();
+        startInterval(windowSpeedID, windowSpeed, chageMode);
+    }
 });

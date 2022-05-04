@@ -21,13 +21,20 @@
                 <div id="container-cursor"></div>
             </div>
             <div id="options">
-                <div>
-                    <h2 id="options-text">Options</h2>
+                <div id="options-text">
+                    <h2>Options</h2>
                 </div>
-                <div class="options-list">
-                    <h3 id="options-list-text">Speed</h3>
-                    <input type="range" min="0" max="1000" value="0" id="options-slider">
-                    <h3 id="slider-value"></h3>
+                <div id="options-list">
+                    <div id="options-list-element">
+                        <h3 id="options-list-text">Text Speed</h3>
+                        <input type="range" min="0" max="1000" value="0" class="options-slider" id="slider-text">
+                        <h4 id="options-slider-value-text">0</h4>
+                    </div>
+                    <div id="options-list-element">
+                        <h3 id="options-list-text">Window Speed</h3>
+                        <input type="range" min="0" max="1000" value="0" class="options-slider" id="slider-window">
+                        <h4 id="options-slider-value-window">0</h4>
+                    </div>
                 </div>
             </div>
         </div>
